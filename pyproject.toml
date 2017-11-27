@@ -1,0 +1,21 @@
+[build-system]
+requires = ['flit']
+build-backend = 'flit.buildapi'
+
+[tool.flit.metadata]
+module = 'qtico'
+author = 'Philipp A.'
+author-email = 'flying-sheep@web.de'
+description-file = 'README.rst'
+home-page = 'http://github.com/flying-sheep/qtico'
+keywords = 'pyqt icons'
+requires-python = '>=3.5'
+requires = ['PyQt5']
+license = 'GPLv3'
+classifiers = [
+    'Development Status :: 4 - Beta',
+    'Programming Language :: Python :: 3',
+    'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+    'Topic :: Software Development :: Build Tools',
+    'Environment :: X11 Applications :: Qt',
+]
