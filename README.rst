@@ -42,7 +42,7 @@ The ``hicolor/<s>x<s>/apps/myapp.png`` files can be
 #. installed to the system by packagers (``/usr/share/icons/hicolor/…``)
 #. subsequently used in a .desktop file (``Icon=myapp``)
 #. used as window icon (``self.setWindowIcon(QIcon.fromTheme('myapp'))``)
-    
+
 
 .. |QIcon.fromTheme| replace:: ``QIcon.fromTheme``
 .. _QIcon.fromTheme: http://doc.qt.io/qt-5/qicon.html#fromTheme

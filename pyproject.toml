@@ -1,21 +1,60 @@
 [build-system]
-requires = ['flit']
-build-backend = 'flit.buildapi'
+build-backend = 'hatchling.build'
 
-[tool.flit.metadata]
-module = 'qtico'
-author = 'Philipp A.'
-author-email = 'flying-sheep@web.de'
-description-file = 'README.rst'
-home-page = 'http://github.com/flying-sheep/qtico'
-keywords = 'pyqt icons'
-requires-python = '>=3.5'
-requires = ['PyQt5']
+requires = [ "hatch-vcs", "hatchling" ]
+
+[project]
+name = "qtico"
+readme = "README.rst"
+keywords = [ "icons", "pyqt" ]
 license = 'GPLv3'
+authors = [ { name = 'Philipp A.', email = 'flying-sheep@web.de' } ]
+requires-python = ">=3.5"
 classifiers = [
-    'Development Status :: 4 - Beta',
-    'Programming Language :: Python :: 3',
-    'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
-    'Topic :: Software Development :: Build Tools',
-    'Environment :: X11 Applications :: Qt',
+  "Development Status :: 4 - Beta",
+  "Environment :: X11 Applications :: Qt",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.5",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Build Tools",
 ]
+dynamic = [ "version" ]
+
+dependencies = [ "pyside6" ]
+urls.Homepage = 'http://github.com/flying-sheep/qtico'
+
+[tool.hatch.version]
+source = 'vcs'
+
+[tool.ruff]
+format.indent-style = "tab"
+format.quote-style = "single"
+lint.select = [ "ALL" ]
+lint.ignore = [
+  "ANN101",  # self type doesn’t need to be annotated
+  "C408",    # dict() calls are nice
+  "COM812",  # trailing commas handled by formatter
+  "D100",    # TODO: remove
+  "D103",    # TODO
+  "D203",    # prefer 0 to 1 blank line before class members
+  "D206",    # indent handled by formatter
+  "D213",    # prefer docstring summary on first line
+  "FIX002",  # “TODO” comments
+  "PLR0913", # having many (kw)args is fine
+  "Q",       # handled by formatter
+  "S101",    # asserts are fine
+  "W191",    # indent handled by formatter
+]
+lint.allowed-confusables = [ "×", "–", "’" ]
+lint.flake8-type-checking.exempt-modules = [  ]
+lint.flake8-type-checking.strict = true
+lint.isort.known-first-party = [ "qtico" ]
+lint.isort.lines-after-imports = 2
+lint.isort.required-imports = [ "from __future__ import annotations" ]
