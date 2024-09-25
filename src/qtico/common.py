@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-	from typing import Generator, Iterable
+	from collections.abc import Generator, Iterable
 
 
 PATH_ICON_THEME = Path('icons')
