@@ -1,10 +1,9 @@
 from __future__ import annotations
 
 from logging import getLogger
+from subprocess import run
 from typing import TYPE_CHECKING
 from warnings import warn
-
-from PySide6.pyrcc_main import processResourceFile
 
 from .common import PATH_ICON_THEME, size_dirs
 
@@ -35,6 +34,10 @@ def ensure_is_file(path: Path, creator: str) -> None:
 	if not path.is_file():
 		msg = f'Could not find {path}. Consider creating it via {creator}'
 		raise FileNotFoundError(msg)
+
+
+def process_resource_files(paths: Path, out: Path) -> None:
+	run(['rcc', '-g', 'python', *paths, '-o', out], check=True)
 
 
 def write_resources(
@@ -74,9 +77,7 @@ def write_resources(
 
 	logger.info('Creating RC.py file %s from %s', path_rcpy, path_qrc)
 	path_rcpy.parent.mkdir(parents=True, exist_ok=True)
-	if not processResourceFile([str(path_qrc)], str(path_rcpy), listFiles=False):
-		msg = 'Error during processing of resource file'
-		raise OSError(msg)
+	process_resource_files(path_qrc, out=path_rcpy)
 
 
 write_resources.__doc__ = f"""\
