@@ -1,5 +1,5 @@
 [build-system]
-build-backend = 'hatchling.build'
+build-backend = "hatchling.build"
 
 requires = [ "hatch-vcs", "hatchling" ]
 
@@ -7,8 +7,8 @@ requires = [ "hatch-vcs", "hatchling" ]
 name = "qtico"
 readme = "README.rst"
 keywords = [ "icons", "pyqt" ]
-license = 'GPL-3.0'
-authors = [ { name = 'Philipp A.', email = 'flying-sheep@web.de' } ]
+license = "GPL-3.0"
+authors = [ { name = "Philipp A.", email = "flying-sheep@web.de" } ]
 requires-python = ">=3.5"
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -28,10 +28,10 @@ classifiers = [
 dynamic = [ "version" ]
 
 dependencies = [ "pyside6" ]
-urls.Homepage = 'http://github.com/flying-sheep/qtico'
+urls.Homepage = "http://github.com/flying-sheep/qtico"
 
 [tool.hatch.version]
-source = 'vcs'
+source = "vcs"
 
 [tool.ruff]
 format.indent-style = "tab"
