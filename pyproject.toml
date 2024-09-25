@@ -7,7 +7,7 @@ requires = [ "hatch-vcs", "hatchling" ]
 name = "qtico"
 readme = "README.rst"
 keywords = [ "icons", "pyqt" ]
-license = 'GPLv3'
+license = 'GPL-3.0'
 authors = [ { name = 'Philipp A.', email = 'flying-sheep@web.de' } ]
 requires-python = ">=3.5"
 classifiers = [
