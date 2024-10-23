@@ -1,5 +1,5 @@
-QtICO
-=====
+QtICO |cov|_
+============
 
 This package provides tools to manage PyQt icon themes.
 
@@ -43,7 +43,8 @@ The ``hicolor/<s>x<s>/apps/myapp.png`` files can be
 #. subsequently used in a .desktop file (``Icon=myapp``)
 #. used as window icon (``self.setWindowIcon(QIcon.fromTheme('myapp'))``)
 
-
+.. |cov| image:: https://codecov.io/gh/flying-sheep/qtico/graph/badge.svg?token=wyxb6gH2I3
+.. _cov: https://codecov.io/gh/flying-sheep/qtico
 .. |QIcon.fromTheme| replace:: ``QIcon.fromTheme``
 .. _QIcon.fromTheme: http://doc.qt.io/qt-5/qicon.html#fromTheme
 .. _freedesktop icon theme spec: http://standards.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html
