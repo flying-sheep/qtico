@@ -4,7 +4,7 @@ import os
 from typing import TYPE_CHECKING
 from warnings import warn
 
-from PySide6.QtGui import QIcon
+from qtpy.QtGui import QIcon
 
 from .common import PATH_ICON_THEME
 

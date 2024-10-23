@@ -24,7 +24,7 @@ classifiers = [
 ]
 dynamic = [ "version" ]
 
-dependencies = [ "pyside6" ]
+dependencies = [ "qtpy" ]
 urls.Homepage = "http://github.com/flying-sheep/qtico"
 
 [tool.hatch.version]
