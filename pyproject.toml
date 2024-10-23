@@ -23,12 +23,17 @@ classifiers = [
   "Typing :: Typed",
 ]
 dynamic = [ "version" ]
-
 dependencies = [ "qtpy" ]
+optional-dependencies.test = [ "pytest" ]
 urls.Homepage = "http://github.com/flying-sheep/qtico"
 
 [tool.hatch.version]
 source = "vcs"
+
+[tool.hatch.envs.hatch-test]
+default-args = [  ]
+features = [ "test" ]
+extra-dependencies = [ "pyside6" ]
 
 [tool.ruff]
 format.indent-style = "tab"
@@ -51,6 +56,7 @@ lint.ignore = [
   "S607",    # PATH is safe
   "W191",    # indent handled by formatter
 ]
+lint.per-file-ignores."tests/**" = [ "ARG001", "INP001" ]
 lint.allowed-confusables = [ "×", "–", "’" ]
 lint.flake8-type-checking.exempt-modules = [  ]
 lint.flake8-type-checking.strict = true
