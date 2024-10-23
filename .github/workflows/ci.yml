@@ -1,0 +1,61 @@
+# https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: Python tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: ["*"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PIP_ROOT_USER_ACTION: ignore
+  COLUMNS: "200"
+  FORCE_COLOR: "1"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.12"]
+        qt: ['5.15', '6.6']
+        qt-api: [pyqt5, pyqt6, pyside6]  #, pyside2
+        exclude:
+          - qt-api: pyqt5
+            qt: '6.6'
+          - qt-api: pyside2
+            qt: '6.6'
+          - qt-api: pyqt6
+            qt: '5.15'
+          - qt-api: pyside6
+            qt: '5.15'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          filter: blob:none
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{ matrix.qt }}.*
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: hynek/setup-cached-uv@v2
+        with:
+          cache-dependency-path: pyproject.toml
+      - name: dependencies
+        run: uv pip install --system .[test] '${{ matrix.qt-api }}==${{ matrix.qt }}.*' coverage-rich 'anyconfig[toml] >=0.14'
+      - name: tests
+        run: coverage run -m pytest --verbose --color=yes
+      - name: show coverage
+        run: coverage-rich report
+      - name: upload coverage
+        uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: true
+          token: d1ce835d-ef91-463d-99ed-818b445cefad
