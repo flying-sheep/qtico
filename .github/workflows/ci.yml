@@ -23,12 +23,23 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9", "3.12"]
-        qt-api: ["pyqt5", "pyqt6", "pyside2", "pyside6"]
+        include:
+          - qt-api: pyqt5
+            qt: 5
+          - qt-api: pyside2
+            qt: 5
+          - qt-api: pyqt6
+            qt: 6
+          - qt-api: pyside6
+            qt: 6
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           filter: blob:none
+      - uses: jurplel/install-qt-action@v4
+        with:
+          version: ${{ matrix.qt }}.*
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
