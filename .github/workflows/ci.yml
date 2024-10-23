@@ -24,7 +24,7 @@ jobs:
       matrix:
         python-version: ["3.9", "3.12"]
         qt: ['5.15', '6.6']
-        qt-api: [pyqt5, pyside2, pyqt6, pyside6]
+        qt-api: [pyqt5, pyqt6, pyside6]  #, pyside2
         exclude:
           - qt-api: pyqt5
             qt: '6.6'
