@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9", "3.12"]
-        qt: ['5', '6.6']
+        qt: ['5.15', '6.6']
         qt-api: [pyqt5, pyside2, pyqt6, pyside6]
         exclude:
           - qt-api: pyqt5
@@ -31,9 +31,9 @@ jobs:
           - qt-api: pyside2
             qt: '6.6'
           - qt-api: pyqt6
-            qt: '5'
+            qt: '5.15'
           - qt-api: pyside6
-            qt: '5'
+            qt: '5.15'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -49,7 +49,7 @@ jobs:
         with:
           cache-dependency-path: pyproject.toml
       - name: dependencies
-        run: uv pip install --system .[test] ${{ matrix.qt-api }} coverage-rich 'anyconfig[toml] >=0.14'
+        run: uv pip install --system .[test] '${{ matrix.qt-api }}==${{ matrix.qt }}.*' coverage-rich 'anyconfig[toml] >=0.14'
       - name: tests
         run: coverage run -m pytest --verbose --color=yes
       - name: show coverage
