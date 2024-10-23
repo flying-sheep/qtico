@@ -49,11 +49,11 @@ jobs:
         with:
           cache-dependency-path: pyproject.toml
       - name: dependencies
-        run: uv pip install --system -e .[test] '${{ matrix.qt-api }}==${{ matrix.qt }}.*' coverage
+        run: uv pip install --system .[test] '${{ matrix.qt-api }}==${{ matrix.qt }}.*' coverage-rich 'anyconfig[toml] >=0.14'
       - name: tests
         run: coverage run -m pytest --verbose --color=yes
       - name: show coverage
-        run: coverage report -m
+        run: coverage-rich report
       - name: upload coverage
         uses: codecov/codecov-action@v4
         with:

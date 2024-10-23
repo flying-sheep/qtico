@@ -63,3 +63,14 @@ lint.flake8-type-checking.strict = true
 lint.isort.known-first-party = [ "qtico" ]
 lint.isort.lines-after-imports = 2
 lint.isort.required-imports = [ "from __future__ import annotations" ]
+
+[tool.coverage.run]
+source_pkgs = [ 'qtico' ]
+[tool.coverage.paths]
+scanpydoc = [ 'src/qtico' ]
+[tool.coverage.report]
+exclude_lines = [
+  'no cov',
+  'if __name__ == .__main__.:',
+  'if TYPE_CHECKING:',
+]
