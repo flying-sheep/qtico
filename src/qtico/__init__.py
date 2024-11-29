@@ -13,9 +13,9 @@ from .theme_index import write_theme_indices
 
 __all__ = [
 	'PATH_ICON_THEME',
-	'write_theme_indices',
-	'write_resources',
-	'write_iconset',
 	'install_icon_theme',
+	'write_iconset',
+	'write_resources',
+	'write_theme_indices',
 ]
 __version__ = version('qtico')
