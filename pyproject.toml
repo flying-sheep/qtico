@@ -41,7 +41,6 @@ format.indent-style = "tab"
 format.quote-style = "single"
 lint.select = [ "ALL" ]
 lint.ignore = [
-  "ANN101",  # self type doesn’t need to be annotated
   "C408",    # dict() calls are nice
   "COM812",  # trailing commas handled by formatter
   "D100",    # TODO: remove
