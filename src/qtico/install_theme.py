@@ -4,8 +4,6 @@ import os
 from typing import TYPE_CHECKING
 from warnings import warn
 
-from qtpy.QtGui import QIcon
-
 from .common import PATH_ICON_THEME
 
 
@@ -24,6 +22,8 @@ def install_icon_theme(
 	*,
 	ignore_varnames: Iterable[str] = ('USE_BUILTIN_ICON_THEME',),
 ) -> None:
+	from qtpy.QtGui import QIcon
+
 	ignore = {vn: os.environ.get(vn, '') for vn in ignore_varnames}
 	forced = [vn for vn, val in ignore.items() if val]
 	no_theme = not QIcon.themeName()
