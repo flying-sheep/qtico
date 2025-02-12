@@ -36,7 +36,7 @@ def ensure_is_file(path: Path, creator: str) -> None:
 		raise FileNotFoundError(msg)
 
 
-def process_resource_files(paths: Path, out: Path) -> None:
+def process_resource_files(*paths: Path, out: Path) -> None:
 	run(['rcc', '-g', 'python', *paths, '-o', out], check=True)
 
 
