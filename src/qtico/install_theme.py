@@ -22,7 +22,7 @@ def install_icon_theme(
 	*,
 	ignore_varnames: Iterable[str] = ('USE_BUILTIN_ICON_THEME',),
 ) -> None:
-	from qtpy.QtGui import QIcon
+	from qtpy.QtGui import QIcon  # noqa: PLC0415
 
 	ignore = {vn: os.environ.get(vn, '') for vn in ignore_varnames}
 	forced = [vn for vn, val in ignore.items() if val]

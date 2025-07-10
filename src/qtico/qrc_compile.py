@@ -61,7 +61,7 @@ def write_resources(
 	files = []
 	for dir_theme in dir_themes.iterdir():
 		path_index = dir_theme / 'index.theme'
-		from .theme_index import write_theme_indices
+		from .theme_index import write_theme_indices  # noqa: PLC0415
 
 		ensure_is_file(path_index, write_theme_indices.__name__)
 		files.append(template_qrc_file(path_index.relative_to(dir_project)))
