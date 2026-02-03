@@ -29,13 +29,13 @@ dependencies = [ "qtpy" ]
 optional-dependencies.test = [ "pytest" ]
 urls.Homepage = "http://github.com/flying-sheep/qtico"
 
-[tool.hatch.version]
-source = "vcs"
-
 [tool.hatch.envs.hatch-test]
 default-args = [  ]
 features = [ "test" ]
 extra-dependencies = [ "pyside6" ]
+
+[tool.hatch.version]
+source = "vcs"
 
 [tool.ruff]
 format.indent-style = "tab"
@@ -65,8 +65,6 @@ lint.isort.known-first-party = [ "qtico" ]
 lint.isort.lines-after-imports = 2
 lint.isort.required-imports = [ "from __future__ import annotations" ]
 
-[tool.coverage.run]
-source_pkgs = [ 'qtico' ]
 [tool.coverage.paths]
 scanpydoc = [ 'src/qtico' ]
 [tool.coverage.report]
@@ -75,6 +73,9 @@ exclude_lines = [
   'if __name__ == .__main__.:',
   'if TYPE_CHECKING:',
 ]
+
+[tool.coverage.run]
+source_pkgs = [ 'qtico' ]
 
 [tool.coverage_rich]
 fail-under = 0 # for now
