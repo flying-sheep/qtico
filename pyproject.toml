@@ -63,13 +63,13 @@ lint.isort.lines-after-imports = 2
 lint.isort.required-imports = [ "from __future__ import annotations" ]
 
 [tool.coverage]
+run.source_pkgs = [ "qtico" ]
 paths.scanpydoc = [ "src/qtico" ]
 report.exclude_lines = [
-  "no cov",
   "if __name__ == .__main__.:",
   "if TYPE_CHECKING:",
+  "no cov",
 ]
-run.source_pkgs = [ "qtico" ]
 
 [tool.coverage_rich]
 fail-under = 0  # for now
