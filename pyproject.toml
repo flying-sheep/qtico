@@ -29,10 +29,10 @@ optional-dependencies.test = [ "pytest" ]
 urls.Homepage = "http://github.com/flying-sheep/qtico"
 
 [tool.hatch]
-envs.hatch-test.default-args = []
+version.source = "vcs"
 envs.hatch-test.features = [ "test" ]
 envs.hatch-test.extra-dependencies = [ "pyside6" ]
-version.source = "vcs"
+envs.hatch-test.default-args = []
 
 [tool.ruff]
 format.indent-style = "tab"
