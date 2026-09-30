@@ -35,19 +35,17 @@ jobs:
           - qt-api: pyside6
             qt: '5.15'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
           filter: blob:none
       - uses: jurplel/install-qt-action@v4
         with:
           version: ${{ matrix.qt }}.*
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
-      - uses: hynek/setup-cached-uv@v2
-        with:
-          cache-dependency-path: pyproject.toml
+      - uses: astral-sh/setup-uv@v10.2.0
       - name: dependencies
         # TODO: remove typer constraint after fixing https://github.com/WaylonWalker/coverage-rich/issues/4
         run: uv pip install --system .[test] '${{ matrix.qt-api }}==${{ matrix.qt }}.*' coverage-rich 'typer<0.14' 'anyconfig[toml] >=0.14'
@@ -56,7 +54,7 @@ jobs:
       - name: show coverage
         run: coverage-rich report
       - name: upload coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v7
         with:
           fail_ci_if_error: true
           token: d1ce835d-ef91-463d-99ed-818b445cefad
