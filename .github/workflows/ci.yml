@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.12"]
+        python-version: ["3.11", "3.14"]
         qt: ["5.15", "6.6"]
         qt-api: [pyqt5, pyqt6, pyside6] #, pyside2
         exclude:
