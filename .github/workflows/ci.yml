@@ -22,18 +22,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.9", "3.12"]
-        qt: ['5.15', '6.6']
-        qt-api: [pyqt5, pyqt6, pyside6]  #, pyside2
+        python-version: ["3.11", "3.14"]
+        qt: ["5.15", "6.6"]
+        qt-api: [pyqt5, pyqt6, pyside6] #, pyside2
         exclude:
           - qt-api: pyqt5
-            qt: '6.6'
+            qt: "6.6"
           - qt-api: pyside2
-            qt: '6.6'
+            qt: "6.6"
           - qt-api: pyqt6
-            qt: '5.15'
+            qt: "5.15"
           - qt-api: pyside6
-            qt: '5.15'
+            qt: "5.15"
     steps:
       - uses: actions/checkout@v7
         with:
@@ -58,3 +58,11 @@ jobs:
         with:
           fail_ci_if_error: true
           token: d1ce835d-ef91-463d-99ed-818b445cefad
+  check:
+    if: always()
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
