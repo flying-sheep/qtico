@@ -18,4 +18,4 @@ jobs:
           cache: "pip"
       - run: pip install build
       - run: python -m build
-      - uses: pypa/gh-action-pypi-publish@v1.14.2
+      - uses: pypa/gh-action-pypi-publish@v1.14.3
