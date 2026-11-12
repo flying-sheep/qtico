@@ -45,7 +45,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
-      - uses: astral-sh/setup-uv@v10.2.0
+      - uses: astral-sh/setup-uv@v10.3.3
       - name: dependencies
         # TODO: remove typer constraint after fixing https://github.com/WaylonWalker/coverage-rich/issues/4
         run: uv pip install --system .[test] '${{ matrix.qt-api }}==${{ matrix.qt }}.*' coverage-rich 'typer<0.14' 'anyconfig[toml] >=0.14'
